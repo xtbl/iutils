@@ -50,6 +50,13 @@
 			for(i = 0; i < array.length; i++) {
 				fn.call(this, i);
 			}
+		},
+
+		types = {
+			0: 'htmlNode',
+			1: 'iUtilsInstance',
+			2: 'id',
+			3: 'class'
 		};
 
 	//configuration
@@ -77,6 +84,24 @@
 			nodes = null;
 			return els;
 		},
+
+		//get Type of
+		getType = function(param){
+			var ret;
+
+			if(typeof param.tagName !== 'undefined') {
+				ret = types[0];
+			} else if( param instanceof iUtils ){
+				ret = types[1];
+			} else if(param.indexOf('#') === 0){
+				ret = types[2];
+			} else if(param.indexOf(".") === 0){
+				ret = types[3];
+			}
+
+			return ret;
+		},
+
 
 		//get Element by class
 		getByClass = function(selector, ctx) {
@@ -106,23 +131,29 @@
 
 		//to get element by selector
 		getElement = function(selector, ctx) {
-			var el;
-
+			
 			ctx = ctx || document;
 
+			var el,
+				ctxType,
+				selectorType = getType(selector);
+
 			if(ctx !== document) {
-				if(typeof ctx.tagName !== 'undefined') {
+
+				ctxType = getType(ctx);
+
+				if(ctxType === types[0]) {
 					ctx = ctx;
-				} else if(ctx instanceof iUtils) {
+				} else if(ctxType === types[1]) {
 					ctx = ctx.getElement(0);
-				} else if(ctx.indexOf('#') === 0) {
+				} else if(ctxType === types[2]) {
 					ctx = document.getElementById(ctx.substring(1));
 				}
 			}
 
-			if(selector.indexOf('#') === 0) {
+			if(selectorType === types[2]) {
 				el = document.getElementById(selector.substring(1));
-			} else if(selector.indexOf(".") === 0) {
+			} else if(selectorType === types[3]) {
 				el = getByClass(selector.substring(1), ctx);
 			} else {
 				el = getTags(selector, ctx)
@@ -233,13 +264,69 @@
 			return this;
 		},
 		html: function(html, array){
-			//in progress
+
+			array = array || this;
+
+			if(getType(html) === types[0]) {
+				local_each.call(array, function(i) {
+					var el = array.getElement(i);
+					el.innerHTML = '';
+					el.appendChild(html);
+					console.log(el);
+					el = null;
+				});
+			} else {
+				local_each.call(array, function(i) {
+					var el = array.getElement(i);
+					el.innerHTML = html;
+					el = null;
+				});
+			}
+
+			return this;
 		},
 		appendHtml: function(html, array){
-			//in progress
+			array = array || this;
+
+			if(getType(html) === types[0]) {
+				local_each.call(array, function(i) {
+					var el = array.getElement(i);
+					el.appendChild(html);
+					console.log(el);
+					el = null;
+				});
+			} else {
+				local_each.call(array, function(i) {
+					var el = array.getElement(i);
+					el.innerHTML += html;
+					el = null;
+				});
+			}
+
+			return this;
 		},
-		prependHtml: function(){
-			//in progress
+		prependHtml: function(html, array){
+			array = array || this;
+
+			if(getType(html) === types[0]) {
+				local_each.call(array, function(i) {
+					var el = array.getElement(i),
+						firstNode = el.childNodes[0];
+
+					el.insertBefore(html, firstNode);
+
+					el = null;
+					firstNode = null;
+				});
+			} else {
+				local_each.call(array, function(i) {
+					var el = array.getElement(i);
+					el.innerHTML = html + el.innerHTML;
+					el = null;
+				});
+			}
+
+			return this;
 		},
 		get: function(i) {
 			return new iUtils.fn.initialize(this.getElement(i));

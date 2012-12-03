@@ -12,18 +12,27 @@ IUTILS also has a set of utilities that have proven to be very useful in many pr
 
 Query Elements:
 
-by Class:  i$('.className')
+by Class:
+	i$('.className')
 
-by Id:	i$('#idName')
+by Id
+	i$('#idName')
 
-by Tag name:	i$('tagName')
+by Tag name
+	i$('tagName')
 
-You can also pass the context as a parameter:	i$('#selector', context). Where the context can be an iUtils object, a query selector, or a html element. It only works with single elements and not with arrays of elements.
+You can also pass the context as a parameter:
+
+	i$('#selector', context)
+
+Where the context can be an iUtils object, a query selector, or a html element. It only works with single elements and not with arrays of elements.
 
 Here are the utils you can make us of:
 
 
 hasClass:
+--------------
+
 Only works with single elements and not with arrays of elements.
 Returns true or false
 Example:
@@ -33,6 +42,8 @@ Example:
 --------------------------------------
 
 addClass:
+--------------
+
 Works with both single elements or arrays of elements.
 returns iUtils element object so you can chain other methods.
 Example:
@@ -42,6 +53,8 @@ Example:
 --------------------------------------
 
 removeClass:
+--------------
+
 Works with both single elements or arrays of elements.
 returns iUtils element object so you can chain other methods.
 Example:
@@ -51,6 +64,8 @@ Example:
 --------------------------------------
 
 addCss:
+--------------
+
 Works with both single elements or arrays of elements.
 returns iUtils element object so you can chain other methods.
 Example:
@@ -60,6 +75,8 @@ Example:
 --------------------------------------
 
 bindEventListener:
+--------------
+
 Works with both single elements or arrays of elements.
 returns iUtils element object so you can chain other methods.
 Example:
@@ -69,6 +86,8 @@ Example:
 --------------------------------------
 
 unbindEventListener:
+--------------
+
 Works with both single elements or arrays of elements.
 returns iUtils element object so you can chain other methods.
 Example:
@@ -78,6 +97,8 @@ Example:
 --------------------------------------
 
 get:
+--------------
+
 Works with both single elements or arrays of elements.
 Used to get an 'index' element wrapped with the iUtils Object.
 returns single HTML Element wrapped in an iUtils Object
@@ -88,6 +109,8 @@ Example:
 --------------------------------------
 
 getElement:
+--------------
+
 Works with both single elements or arrays of elements.
 returns single HTML Element.
 Example:
@@ -97,6 +120,8 @@ Example:
 --------------------------------------
 
 getParent:
+--------------
+
 Only works with single elements and not with arrays of elements.
 returns parent of the current Element in an iUtils wrapper so you can chain other methods.
 Example:
@@ -106,6 +131,8 @@ Example:
 --------------------------------------
 
 getAttr:
+--------------
+
 Works with both single elements or arrays of elements.
 returns given attribute or false.
 Example:
@@ -115,6 +142,8 @@ Example:
 --------------------------------------
 
 setAttr:
+--------------
+
 Works with both single elements or arrays of elements.
 returns given attribute or false.
 Example:
@@ -124,6 +153,8 @@ Example:
 --------------------------------------
 
 removeAttr:
+--------------
+
 Works with both single elements or arrays of elements.
 returns given attribute or false.
 Example:
@@ -133,6 +164,8 @@ Example:
 --------------------------------------
 
 destroy:
+--------------
+
 Removes Elements from DOM
 Works with both single elements or arrays of elements.
 returns current Object
@@ -143,6 +176,8 @@ Example:
 --------------------------------------
 
 each:
+--------------
+
 creates a loop to walk through an array of elements
 Example:
 
@@ -151,6 +186,8 @@ Example:
 --------------------------------------
 
 extend:
+--------------
+
 adds properties from an object to another object and returns the target object
 Example:
 
@@ -159,6 +196,8 @@ Example:
 --------------------------------------
 
 mergeArrays:
+--------------
+
 add properties from one array to another and retursn the target array
 
 	i$.mergeArrays(targetArr, sourceArr);
@@ -166,6 +205,8 @@ add properties from one array to another and retursn the target array
 --------------------------------------
 
 delay:
+--------------
+
 a set Interval in a wrapper so it can be reused:
 
 	i$.delay(fn, time);
@@ -173,6 +214,8 @@ a set Interval in a wrapper so it can be reused:
 --------------------------------------
 
 log:
+--------------
+
 A method used for logging. Login can be disabled by changing the configuration flag: i$.config.flags.log = false;
 Example:
 	
@@ -180,6 +223,8 @@ Example:
 
 --------------------------------------
 html:
+--------------
+
 adds html to an element
 param: string or html element
 returns current element to enable chaning
@@ -191,6 +236,8 @@ Example:
 
 --------------------------------------
 appendHtml:
+--------------
+
 appends html to an element
 param: string or html element
 returns current element to enable chaning
@@ -202,6 +249,8 @@ Example:
 
 --------------------------------------
 prependHtml:
+--------------
+
 prepends html to an element
 param: string or html element
 returns current element to enable chaning
@@ -215,10 +264,10 @@ Example:
 
 **Copyright 2011 Ian Calderon Lopez**
 
-**This program is free software: you can redistribute it and/or modify
+This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
 the Free Software Foundation, either version 3 of the License, or
-(at your option) any later version.
+any later version.
 
 This program is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -226,4 +275,4 @@ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
-along with this program.  If not, see <http://www.gnu.org/licenses/>.**
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
