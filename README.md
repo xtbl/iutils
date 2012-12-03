@@ -28,7 +28,7 @@ Only works with single elements and not with arrays of elements.
 Returns true or false
 Example:
 
-i$('#blockOne').hasClass('className');
+	i$('#blockOne').hasClass('className');
 
 --------------------------------------
 
@@ -37,7 +37,7 @@ Works with both single elements or arrays of elements.
 returns iUtils element object so you can chain other methods.
 Example:
 
-i$('#blockOne').addClass('className');
+	i$('#blockOne').addClass('className');
 
 --------------------------------------
 
@@ -46,7 +46,7 @@ Works with both single elements or arrays of elements.
 returns iUtils element object so you can chain other methods.
 Example:
 
-i$('#blockOne').removeClass('className');
+	i$('#blockOne').removeClass('className');
 
 --------------------------------------
 
@@ -55,7 +55,7 @@ Works with both single elements or arrays of elements.
 returns iUtils element object so you can chain other methods.
 Example:
 
-i$('#blockOne').addCss('propertyName', 'value');
+	i$('#blockOne').addCss('propertyName', 'value');
 
 --------------------------------------
 
@@ -64,7 +64,7 @@ Works with both single elements or arrays of elements.
 returns iUtils element object so you can chain other methods.
 Example:
 
-i$('#blockOne').bindEventListener('eventType', fn);
+	i$('#blockOne').bindEventListener('eventType', fn);
 
 --------------------------------------
 
@@ -73,7 +73,7 @@ Works with both single elements or arrays of elements.
 returns iUtils element object so you can chain other methods.
 Example:
 
-i$('#blockOne').unbindEventListener('eventType', fn);
+	i$('#blockOne').unbindEventListener('eventType', fn);
 
 --------------------------------------
 
@@ -83,7 +83,7 @@ Used to get an 'index' element wrapped with the iUtils Object.
 returns single HTML Element wrapped in an iUtils Object
 Example:
 
-i$('.block').get(index);
+	i$('.block').get(index);
 
 --------------------------------------
 
@@ -92,7 +92,7 @@ Works with both single elements or arrays of elements.
 returns single HTML Element.
 Example:
 
-i$('.block').getElement(index);
+	i$('.block').getElement(index);
 
 --------------------------------------
 
@@ -101,7 +101,7 @@ Only works with single elements and not with arrays of elements.
 returns parent of the current Element in an iUtils wrapper so you can chain other methods.
 Example:
 
-i$('#blockOne').getParent();
+	i$('#blockOne').getParent();
 
 --------------------------------------
 
@@ -110,7 +110,7 @@ Works with both single elements or arrays of elements.
 returns given attribute or false.
 Example:
 
-i$('.block').getAttr('rel');
+	i$('.block').getAttr('rel');
 
 --------------------------------------
 
@@ -119,7 +119,7 @@ Works with both single elements or arrays of elements.
 returns given attribute or false.
 Example:
 
-i$('.block').setAttr('rel');
+	i$('.block').setAttr('rel');
 
 --------------------------------------
 
@@ -128,7 +128,7 @@ Works with both single elements or arrays of elements.
 returns given attribute or false.
 Example:
 
-i$('.block').removeAttr('rel');
+	i$('.block').removeAttr('rel');
 
 --------------------------------------
 
@@ -138,14 +138,15 @@ Works with both single elements or arrays of elements.
 returns current Object
 Example:
 
-i$('.block').destroy();
+	i$('.block').destroy();
 
 --------------------------------------
 
 each:
 creates a loop to walk through an array of elements
 Example:
-i$('.block').each(function(index){});
+
+	i$('.block').each(function(index){});
 
 --------------------------------------
 
@@ -153,27 +154,28 @@ extend:
 adds properties from an object to another object and returns the target object
 Example:
 
-i$.extend(sourceObj, targetObj);
+	i$.extend(sourceObj, targetObj);
 
 --------------------------------------
 
 mergeArrays:
 add properties from one array to another and retursn the target array
-i$.mergeArrays(targetArr, sourceArr);
+
+	i$.mergeArrays(targetArr, sourceArr);
 
 --------------------------------------
 
 delay:
 a set Interval in a wrapper so it can be reused:
 
-i$.delay(fn, time);
+	i$.delay(fn, time);
 
 --------------------------------------
 
 log:
 A method used for logging. Login can be disabled by changing the configuration flag: i$.config.flags.log = false;
 Example:
-i$.log('log text here');
+	
 
 
 --------------------------------------
@@ -183,9 +185,9 @@ param: string or html element
 returns current element to enable chaning
 Example:
 
-i$('.block').html('<p>hello World</p>');
+	i$('.block').html('<p>hello World</p>');
 
-i$('.block').html(htmlNode);
+	i$('.block').html(htmlNode);
 
 --------------------------------------
 appendHtml:
@@ -194,9 +196,10 @@ param: string or html element
 returns current element to enable chaning
 Example:
 
-i$('.block').appendHtml('<p>hello World</p>');
+	i$('.block').appendHtml('<p>hello World</p>');
 
-i$('.block').appendHtml(htmlNode);
+	i$('.block').appendHtml(htmlNode);
+
 --------------------------------------
 prependHtml:
 prepends html to an element
@@ -204,9 +207,9 @@ param: string or html element
 returns current element to enable chaning
 Example:
 
-i$('.block').prependHtml('<p>hello World</p>');
+	i$('.block').prependHtml('<p>hello World</p>');
 
-i$('.block').prependHtml(htmlNode);
+	i$('.block').prependHtml(htmlNode);
 
 *****
 
