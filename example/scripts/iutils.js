@@ -7,24 +7,6 @@
  *Copyright 2011 Ian Calderon Lopez
  *This library is distributed under the terms of the GNU General Public License
  *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
  */
 (function(window, document, undefined) {
 
@@ -33,104 +15,6 @@
 			return new iUtils.fn.initialize(selector, ctx);
 		},
 
-		//getting tags
-		getTags = function(selector, ctx) {
-			
-			var els = [],
-				nodes = ctx.getElementsByTagName(selector),
-				i;
-
-			local_each.call(nodes, function(i){
-				local_push.call(els, nodes[i]);
-			});
-
-			local_each.call(nodes, function(){
-				nodes[i] = null;
-			});
-
-			nodes = null;
-			return els;
-		},
-
-		//get Element by class
-		getByClass = function(selector, ctx) {
-			var tags = getTags('*', ctx),
-				els = [],
-				i;
-
-			local_each.call(tags, function(i){
-
-				var el = tags[i];
-
-				if(iUtils.fn.hasClass(selector, el)) {
-					local_push.call(els, el);
-				}
-
-				el = null;
-
-			});
-
-			local_each.call(tags, function(){
-				tags[i] = null;
-			});
-
-			tags = null;
-			return els;
-		},
-
-		//to get element by selector
-		getElement = function(selector, ctx) {
-			var el;
-
-			ctx = ctx || document;
-
-			if(ctx !== document){
-				if( typeof ctx.tagName !== 'undefined'){
-					ctx = ctx;
-				} else if(ctx instanceof iUtils) {
-					ctx = ctx.getElement(0);
-				} else if(ctx.indexOf('#') === 0) {
-					ctx = document.getElementById(ctx.substring(1));
-				} 
-			}
-
-			if(selector.indexOf('#') === 0) {
-				el = document.getElementById(selector.substring(1));
-			} else if(selector.indexOf(".") === 0) {
-				el = getByClass(selector.substring(1), ctx);
-			} else {
-				el = getTags(selector, ctx)
-			}
-
-			return el;
-		},
-
-		//creating object
-		makeObject = function(object, els) {
-
-			var length = 0,
-				i;
-
-			object.push = local_push;
-			object.splice = local_splice;
-
-			if(els.length) {
-
-				local_each.call(els, function(i){
-					local_push.call(object, els[i]);
-					length++;
-				});
-
-			} else {
-				if(els.length > 0 || typeof els.length === 'undefined'){
-					local_push.call(object, els);
-					length++;
-				} 
-			}
-			object.length = length;
-
-			return object;
-		},
 		//local splice call
 		local_splice = Array.prototype.splice,
 
@@ -149,21 +33,21 @@
 
 			return target;
 		},
-		local_remove = function(array){
+		local_remove = function(array) {
 
-			local_each.call(array, function(i){
+			local_each.call(array, function(i) {
 				array[i] = null;
 				local_splice.call(array, array[i]);
 			});
 
 			array = null;
 		},
-		local_each = function(fn, array){
+		local_each = function(fn, array) {
 			var i;
 
 			array = array || this;
 
-			for(i=0; i < array.length; i++){
+			for(i = 0; i < array.length; i++) {
 				fn.call(this, i);
 			}
 		};
@@ -173,7 +57,105 @@
 		flags: {
 			log: true
 		}
-	},
+	};
+
+	var getTags = function(selector, ctx) {
+
+			var els = [],
+				nodes = ctx.getElementsByTagName(selector),
+				i;
+
+			local_each.call(nodes, function(i) {
+				local_push.call(els, nodes[i]);
+			});
+
+			local_each.call(nodes, function() {
+				nodes[i] = null;
+			});
+
+			nodes = null;
+			return els;
+		},
+
+		//get Element by class
+		getByClass = function(selector, ctx) {
+			var tags = getTags('*', ctx),
+				els = [],
+				i;
+
+			local_each.call(tags, function(i) {
+
+				var el = tags[i];
+
+				if(iUtils.fn.hasClass(selector, el)) {
+					local_push.call(els, el);
+				}
+
+				el = null;
+
+			});
+
+			local_each.call(tags, function() {
+				tags[i] = null;
+			});
+
+			tags = null;
+			return els;
+		},
+
+		//to get element by selector
+		getElement = function(selector, ctx) {
+			var el;
+
+			ctx = ctx || document;
+
+			if(ctx !== document) {
+				if(typeof ctx.tagName !== 'undefined') {
+					ctx = ctx;
+				} else if(ctx instanceof iUtils) {
+					ctx = ctx.getElement(0);
+				} else if(ctx.indexOf('#') === 0) {
+					ctx = document.getElementById(ctx.substring(1));
+				}
+			}
+
+			if(selector.indexOf('#') === 0) {
+				el = document.getElementById(selector.substring(1));
+			} else if(selector.indexOf(".") === 0) {
+				el = getByClass(selector.substring(1), ctx);
+			} else {
+				el = getTags(selector, ctx)
+			}
+
+			return el;
+		},
+
+		//creating object
+		makeObject = function(object, els) {
+			var length = 0,
+				i;
+
+			object.push = local_push;
+			object.splice = local_splice;
+
+			if(els.length) {
+
+				local_each.call(els, function(i) {
+					local_push.call(object, els[i]);
+					length++;
+				});
+
+			} else {
+				if(els.length > 0 || typeof els.length === 'undefined') {
+					local_push.call(object, els);
+					length++;
+				}
+			}
+			object.length = length;
+
+			return object;
+		};
+
 
 	//object methods
 	iUtils.fn = iUtils.prototype = {
@@ -191,7 +173,7 @@
 		addClass: function(cls, array) {
 			array = this || array;
 
-			local_each.call(array, function(i){
+			local_each.call(array, function(i) {
 
 				var el = array[i];
 				if(!iUtils.fn.hasClass(cls, el)) {
@@ -206,16 +188,16 @@
 			array = array || this;
 			cls = cls || '';
 
-			local_each.call(array, function(i){
+			local_each.call(array, function(i) {
 				var el = array[i],
 					classes = el.className.split(' ');
 
-					local_each.call(classes, function(x){
+				local_each.call(classes, function(x) {
 
-						if(classes[x] === cls){
-							classes.splice(x, 1);
-						}
-					});
+					if(classes[x] === cls) {
+						classes.splice(x, 1);
+					}
+				});
 
 				el.className = classes.join(' ');
 
@@ -225,49 +207,58 @@
 
 			return this;
 		},
-		bindEvent: function(type, fn, array){
+		bindEventListener: function(type, fn, array) {
 			//IE9+, webkit and firefox
 			array = array || this;
 
-			local_each.call(array, function(i){
+			local_each.call(array, function(i) {
 				var el = array[i];
 				el.addEventListener(type, fn);
 				el = null;
 			});
 		},
-		unbindEvent: function(type, fn, array){
+		unbindEventListener: function(type, fn, array) {
 			//IE9+, webkit and firefox
 			array = array || this;
 
-			local_each.call(array, function(i){
+			local_each.call(array, function(i) {
 				var el = array[i];
 				el.removeEventListener(type, fn);
 				el = null;
 			});
 		},
-		get: function(i) {
-			return makeObject(this, this.getElement(i));
+		html: function(html, array){
+			//in progress
 		},
-		getElement: function(i){
+		appendHtml: function(html, array){
+			//in progress
+		},
+		prependHtml: function(){
+			//in progress
+		},
+		get: function(i) {
+			return new iUtils.fn.initialize(this.getElement(i));
+		},
+		getElement: function(i) {
 			return this[i];
 		},
-		getParent: function(){
-			return this.getElement(0).parentNode;
+		getParent: function() {
+			return new iUtils.fn.initialize(this.getElement(0).parentNode);
 		},
-		getAttr: function(attr){
+		getAttr: function(attr) {
 			return this.getElement(0).getAttribute(attr) || false;
 		},
-		setAttr: function(attr, val){
+		setAttr: function(attr, val) {
 			return this.getElement(0).setAttribute(attr, val);
 		},
-		removeAttr: function(attr){
+		removeAttr: function(attr) {
 			return this.getElement(0).removeAttribute(attr);
 		},
-		addCss: function(name, val, array){
+		addCss: function(name, val, array) {
 			array = array || this;
 
 
-			local_each.call(array, function(i){
+			local_each.call(array, function(i) {
 				var el = array[i];
 				el.style[name] = val;
 				el = null;
@@ -279,7 +270,7 @@
 
 			array = array || this;
 
-			local_each.call(array, function(i){
+			local_each.call(array, function(i) {
 
 				var parent = array[i].parentNode,
 					el = array[i];
@@ -292,7 +283,7 @@
 			});
 
 			local_remove(this);
-			
+
 			return this;
 		},
 		extend: local_extend,
@@ -304,12 +295,14 @@
 
 		target = target || [];
 
-		local_each.call(arr, function(i){
+		local_each.call(arr, function(i) {
 			local_push.call(target, arr[i]);
 		});
 
 		return target;
 	};
+
+	iUtils.extend = local_extend;
 
 	//to log based on local config
 	iUtils.log = function(msg) {
