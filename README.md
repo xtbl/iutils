@@ -30,12 +30,16 @@ Example:
 
 i$('#blockOne').hasClass('className');
 
+--------------------------------------
+
 addClass:
 Works with both single elements or arrays of elements.
 returns iUtils element object so you can chain other methods.
 Example:
 
 i$('#blockOne').addClass('className');
+
+--------------------------------------
 
 removeClass:
 Works with both single elements or arrays of elements.
@@ -44,6 +48,8 @@ Example:
 
 i$('#blockOne').removeClass('className');
 
+--------------------------------------
+
 addCss:
 Works with both single elements or arrays of elements.
 returns iUtils element object so you can chain other methods.
@@ -51,6 +57,7 @@ Example:
 
 i$('#blockOne').addCss('propertyName', 'value');
 
+--------------------------------------
 
 bindEventListener:
 Works with both single elements or arrays of elements.
@@ -59,12 +66,16 @@ Example:
 
 i$('#blockOne').bindEventListener('eventType', fn);
 
+--------------------------------------
+
 unbindEventListener:
 Works with both single elements or arrays of elements.
 returns iUtils element object so you can chain other methods.
 Example:
 
 i$('#blockOne').unbindEventListener('eventType', fn);
+
+--------------------------------------
 
 get:
 Works with both single elements or arrays of elements.
@@ -74,12 +85,16 @@ Example:
 
 i$('.block').get(index);
 
+--------------------------------------
+
 getElement:
 Works with both single elements or arrays of elements.
 returns single HTML Element.
 Example:
 
 i$('.block').getElement(index);
+
+--------------------------------------
 
 getParent:
 Only works with single elements and not with arrays of elements.
@@ -88,12 +103,16 @@ Example:
 
 i$('#blockOne').getParent();
 
+--------------------------------------
+
 getAttr:
 Works with both single elements or arrays of elements.
 returns given attribute or false.
 Example:
 
 i$('.block').getAttr('rel');
+
+--------------------------------------
 
 setAttr:
 Works with both single elements or arrays of elements.
@@ -102,6 +121,8 @@ Example:
 
 i$('.block').setAttr('rel');
 
+--------------------------------------
+
 removeAttr:
 Works with both single elements or arrays of elements.
 returns given attribute or false.
@@ -109,6 +130,7 @@ Example:
 
 i$('.block').removeAttr('rel');
 
+--------------------------------------
 
 destroy
 Removes Elements from DOM
@@ -118,10 +140,14 @@ Example:
 
 i$('.block').destroy();
 
+--------------------------------------
+
 each
 creates a loop to walk through an array of elements
 Example:
 i$('.block').each(function(index){});
+
+--------------------------------------
 
 extend
 adds properties from an object to another object and returns the target object
@@ -129,14 +155,20 @@ Example:
 
 i$.extend(sourceObj, targetObj);
 
+--------------------------------------
+
 mergeArrays:
 add properties from one array to another and retursn the target array
 i$.mergeArrays(targetArr, sourceArr);
+
+--------------------------------------
 
 delay:
 a set Interval in a wrapper so it can be reused:
 
 i$.delay(fn, time);
+
+--------------------------------------
 
 log:
 A method used for logging. Login can be disabled by changing the configuration flag: i$.config.flags.log = false;
@@ -144,11 +176,11 @@ Example:
 i$.log('log text here');
 
 
-
+*****
 
 **Copyright 2011 Ian Calderon Lopez**
 
-This program is free software: you can redistribute it and/or modify
+**This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
 the Free Software Foundation, either version 3 of the License, or
 (at your option) any later version.
@@ -159,4 +191,4 @@ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
-along with this program.  If not, see <http://www.gnu.org/licenses/>.
+along with this program.  If not, see <http://www.gnu.org/licenses/>.**

@@ -7,24 +7,6 @@
  *Copyright 2011 Ian Calderon Lopez
  *This library is distributed under the terms of the GNU General Public License
  *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
  */
 (function(window, document, undefined) {
 
@@ -245,21 +227,14 @@
 				el = null;
 			});
 		},
-		htmls: function(html, array){
-			array = array || this;
-
-			local_each.call(array, function(i) {
-
-				var el = array.getElement(i);
-				el.innerHTML = html;
-				el = null;
-
-			});
-
-			return this;
+		html: function(html, array){
+			//in progress
 		},
-		appendHtml: function(){
-
+		appendHtml: function(html, array){
+			//in progress
+		},
+		prependHtml: function(){
+			//in progress
 		},
 		get: function(i) {
 			return new iUtils.fn.initialize(this.getElement(i));
@@ -281,7 +256,6 @@
 		},
 		addCss: function(name, val, array) {
 			array = array || this;
-
 
 			local_each.call(array, function(i) {
 				var el = array[i];
