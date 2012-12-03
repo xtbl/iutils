@@ -59,6 +59,7 @@
 		}
 	};
 
+	//get by tags
 	var getTags = function(selector, ctx) {
 
 			var els = [],
@@ -216,6 +217,8 @@
 				el.addEventListener(type, fn);
 				el = null;
 			});
+
+			return this;
 		},
 		unbindEventListener: function(type, fn, array) {
 			//IE9+, webkit and firefox
@@ -226,6 +229,8 @@
 				el.removeEventListener(type, fn);
 				el = null;
 			});
+
+			return this;
 		},
 		html: function(html, array){
 			//in progress
@@ -288,6 +293,7 @@
 		extend: local_extend,
 		each: local_each
 	};
+
 
 	iUtils.fn.initialize.prototype = iUtils.fn;
 	

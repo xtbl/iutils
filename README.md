@@ -132,7 +132,7 @@ i$('.block').removeAttr('rel');
 
 --------------------------------------
 
-destroy
+destroy:
 Removes Elements from DOM
 Works with both single elements or arrays of elements.
 returns current Object
@@ -142,14 +142,14 @@ i$('.block').destroy();
 
 --------------------------------------
 
-each
+each:
 creates a loop to walk through an array of elements
 Example:
 i$('.block').each(function(index){});
 
 --------------------------------------
 
-extend
+extend:
 adds properties from an object to another object and returns the target object
 Example:
 
@@ -175,6 +175,38 @@ A method used for logging. Login can be disabled by changing the configuration f
 Example:
 i$.log('log text here');
 
+
+--------------------------------------
+html:
+adds html to an element
+param: string or html element
+returns current element to enable chaning
+Example:
+
+i$('.block').html('<p>hello World</p>');
+
+i$('.block').html(htmlNode);
+
+--------------------------------------
+appendHtml:
+appends html to an element
+param: string or html element
+returns current element to enable chaning
+Example:
+
+i$('.block').appendHtml('<p>hello World</p>');
+
+i$('.block').appendHtml(htmlNode);
+--------------------------------------
+prependHtml:
+prepends html to an element
+param: string or html element
+returns current element to enable chaning
+Example:
+
+i$('.block').prependHtml('<p>hello World</p>');
+
+i$('.block').prependHtml(htmlNode);
 
 *****
 
