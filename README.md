@@ -13,12 +13,15 @@ IUTILS also has a set of utilities that have proven to be very useful in many pr
 Query Elements:
 
 by Class:
+
 	i$('.className')
 
-by Id
+by Id:
+
 	i$('#idName')
 
-by Tag name
+by Tag name:
+
 	i$('tagName')
 
 You can also pass the context as a parameter:
