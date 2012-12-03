@@ -289,6 +289,8 @@
 		each: local_each
 	};
 
+	iUtils.fn.initialize.prototype = iUtils.fn;
+	
 	//to merge arrays
 	iUtils.mergeArrays = function(target, arr) {
 
@@ -316,7 +318,6 @@
 		setTimeout(callback, time);
 	};
 
-	iUtils.fn.initialize.prototype = iUtils.fn;
 
 	//defining in global object
 	window.iUtils = i$ = iUtils;

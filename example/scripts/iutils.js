@@ -59,6 +59,7 @@
 		}
 	};
 
+	//get by tags
 	var getTags = function(selector, ctx) {
 
 			var els = [],
@@ -216,6 +217,8 @@
 				el.addEventListener(type, fn);
 				el = null;
 			});
+
+			return this;
 		},
 		unbindEventListener: function(type, fn, array) {
 			//IE9+, webkit and firefox
@@ -226,6 +229,8 @@
 				el.removeEventListener(type, fn);
 				el = null;
 			});
+
+			return this;
 		},
 		html: function(html, array){
 			//in progress
@@ -256,7 +261,6 @@
 		},
 		addCss: function(name, val, array) {
 			array = array || this;
-
 
 			local_each.call(array, function(i) {
 				var el = array[i];
@@ -290,6 +294,9 @@
 		each: local_each
 	};
 
+
+	iUtils.fn.initialize.prototype = iUtils.fn;
+	
 	//to merge arrays
 	iUtils.mergeArrays = function(target, arr) {
 
@@ -317,7 +324,6 @@
 		setTimeout(callback, time);
 	};
 
-	iUtils.fn.initialize.prototype = iUtils.fn;
 
 	//defining in global object
 	window.iUtils = i$ = iUtils;
