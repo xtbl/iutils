@@ -166,6 +166,17 @@ Example:
 
 --------------------------------------
 
+filterByClass:
+--------------
+
+works with arrays of elements
+returns an array of filtered elements
+example:
+
+i$('.block').filterByClass('active');
+
+--------------------------------------
+
 destroy:
 --------------
 
@@ -222,6 +233,7 @@ log:
 A method used for logging. Login can be disabled by changing the configuration flag: i$.config.flags.log = false;
 Example:
 	
+	i$.log(string);
 
 
 --------------------------------------

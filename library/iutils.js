@@ -195,11 +195,15 @@
 		version: '0.2',
 		initialize: function(selector, ctx) {
 
-			var el = selector.nodeName ? selector : getElement(selector, ctx);
-			return makeObject(this, el);
+			//if not receiving array of elements
+			if(!(selector instanceof Array)){
+				selector = selector.nodeName ? selector : getElement(selector, ctx);
+			}
+
+			return makeObject(this, selector);
 		},
 		hasClass: function(cls, element) {
-			element = element || this.get(0);
+			element = element || this.getElement(0);
 			return !!(element.className.match(new RegExp('(\\s|^)' + cls + '(\\s|$)')));
 		},
 		addClass: function(cls, array) {
@@ -346,13 +350,35 @@
 		removeAttr: function(attr) {
 			return this.getElement(0).removeAttribute(attr);
 		},
-		addCss: function(name, val, array) {
+		filterByClass: function(cls, array){
+			
+			var els = [];
+
+			array = array || this;
+
+			local_each.call(array, function(i){
+				var el = array.getElement(i);
+
+				if(iUtils.fn.hasClass(cls, el)){
+					els.push(el);
+				}
+
+				el = null;
+			});
+
+			return new iUtils.fn.initialize(els);
+
+		},
+		addCss: function(prop, array) {
 			array = array || this;
 
 			local_each.call(array, function(i) {
 				var el = array[i];
-				el.style[name] = val;
+
+				el.style.cssText += prop;
+
 				el = null;
+
 			});
 
 			return this;
