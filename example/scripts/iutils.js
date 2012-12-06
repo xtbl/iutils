@@ -22,16 +22,16 @@
 		local_push = Array.prototype.push,
 
 		//to extend object
-		local_extend = function(source, target) {
-			var key;
+		local_extend = function(obj, source) {
+			var key,
+				source = this.fn || source;
 
-			for(key in source) {
-				target[key] = source[key];
+			for(key in obj) {
+				source[key] = obj[key];
 			}
 
 			key = null;
-
-			return target;
+			source = null;
 		},
 		local_remove = function(array) {
 
@@ -403,7 +403,6 @@
 
 			return this;
 		},
-		extend: local_extend,
 		each: local_each
 	};
 
