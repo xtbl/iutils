@@ -3,7 +3,7 @@
  *IUTILS UTILS LIBRARY
  *
  *CREATED BASED ON THE NEED OF A LIGHTWEIGHT LIBRARY FOR MOBILE WEB APPLICATIONS
- *version: 0.2
+ *version: 0.3
  *Copyright 2011 Ian Calderon Lopez
  *This library is distributed under the terms of the GNU General Public License
  *
@@ -139,38 +139,91 @@
 		tags = null;
 		return els;
 	},
+	//get current context
+	getContext = function(list, ctx){
+
+		var currentCtxType,
+			currentCtx,
+			l = 0,
+			ctxType;
+
+			ctx = ctx || document;
+
+			if(ctx !== document){
+				
+				ctxType = getType(ctx);
+
+				if(ctxType === types[1]){
+					ctx = ctx.getElement(0);
+				}
+			}
+			
+			ctx = [ctx];
+			
+		while(l < list.length-1){
+
+			currentCtx = list[l];
+			currentCtxType = getType(currentCtx);
+
+			if (currentCtxType === types[2]) {
+				currentCtx = [document.getElementById(currentCtx.substring(1))];
+			} else if (currentCtxType === types[3]) {
+				local_each.call(ctx, function(i){
+					var tempCtx = ctx[i];
+					currentCtx = getByClass(currentCtx.substring(1), tempCtx);
+					tempCtx = null;
+				});
+			} else {
+				local_each.call(ctx, function(i){
+					var tempCtx = ctx[i];
+					currentCtx = getTags(currentCtx, tempCtx);
+					tempCtx = null;
+				});
+			}
+
+			ctx = null;
+			ctx = currentCtx;
+			currentCtx = null;
+
+			l++;
+		}
+
+		return ctx;
+	},
+	//get target Elements
+	getElementList = function(selector, ctx){
+
+		var selList = selector.split(' '),
+			elementList = [],
+			listLength = selList.length-1,
+			currentSel = selList[listLength],
+			currentCtxType = getType(selList[listLength]),
+			contextList = getContext(selList, ctx);
+
+		//getting element
+		local_each.call(contextList, function(i){
+			var currentCtx = contextList[i];
+
+			if (currentCtxType === types[2]) {
+				elementList.push(document.getElementById(currentSel.substring(1)));
+			} else if (currentCtxType === types[3]) {
+				iUtils.mergeArrays(elementList, getByClass(currentSel.substring(1), currentCtx));
+			} else {
+				iUtils.mergeArrays(elementList, getTags(currentSel, currentCtx));
+			}
+
+			currentCtx = null;
+		});
+
+		contextList = null;
+
+		return elementList;
+	},
 	
 	//to get element by selector
-	getElement = function (selector, ctx) {
-		
-		ctx = ctx || document;
-		
-		var el,
-		ctxType,
-		selectorType = getType(selector);
-		
-		if (ctx !== document) {
-			
-			ctxType = getType(ctx);
-			
-			if (ctxType === types[0]) {
-				ctx = ctx;
-			} else if (ctxType === types[1]) {
-				ctx = ctx.getElement(0);
-			} else if (ctxType === types[2]) {
-				ctx = document.getElementById(ctx.substring(1));
-			}
-		}
-		
-		if (selectorType === types[2]) {
-			el = document.getElementById(selector.substring(1));
-		} else if (selectorType === types[3]) {
-			el = getByClass(selector.substring(1), ctx);
-		} else {
-			el = getTags(selector, ctx)
-		}
-		
-		return el;
+	getElement = function (selector, ctx) {	
+
+		return getElementList(selector, ctx);
 	},
 	
 	//creating object
@@ -206,7 +259,7 @@
 	//object methods
 	iUtils.fn = iUtils.prototype = {
 		constructor : iUtils,
-		version : '0.2',
+		version : '0.3',
 		initialize : function (selector, ctx) {
 			
 			//if not receiving array of elements

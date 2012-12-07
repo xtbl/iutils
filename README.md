@@ -1,5 +1,5 @@
 
-iUtils 0.2
+iUtils 0.3
 ==============
 
 Lightweight toolbelt for modern browsers.
@@ -37,7 +37,7 @@ You can also pass a long string of selectors, in this case, the first one must n
 	i$('.selector div a', context)
 
 	//this wont work:
-	
+
 	i$('div div a', context)
 
 Where the context can be an iUtils object, a query selector, or a html element. It only works with single elements and not with arrays of elements.
