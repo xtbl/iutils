@@ -1,10 +1,10 @@
-window.a = i$('.test');
 
-window.b = i$('#wrapper');
+//first selector must have a class or id
 
-window.c = i$('a');
+a = i$('.test .listItem');
 
+//b = i$('#wrapper');
 
-window.e = document.createElement('span');
-e.className = 'testtestest';
-e.innerHTML = 'hello';
+//window.b = i$('#wrapper');
+
+//window.c = i$('a', document.getElementById('wrapper'));

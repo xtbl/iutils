@@ -28,6 +28,18 @@ You can also pass the context as a parameter:
 
 	i$('#selector', context)
 
+You can also pass a long string of selectors, in this case, the first one must not be a tag, it must be an ID or a Class selector:
+
+	i$('#selector div .link', context)
+
+	//or
+
+	i$('.selector div a', context)
+
+	//this wont work:
+	
+	i$('div div a', context)
+
 Where the context can be an iUtils object, a query selector, or a html element. It only works with single elements and not with arrays of elements.
 
 Here are the utils you can make us of:
