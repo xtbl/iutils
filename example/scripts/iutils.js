@@ -33,12 +33,16 @@
 		key = null;
 		source = null;
 	},
-	local_remove = function () {
+	local_destroy = function () {
 		
 		local_each.call(this, function (i) {
 			this[i] = null;
 			local_splice.call(this, this[i]);
 		});
+
+		local_removeFn.call(this);
+
+		return this;
 	},
 	local_each = function (fn) {
 		var i;
@@ -46,6 +50,16 @@
 		for (i = 0; i < this.length; i++) {
 			fn.call(this, i);
 		}
+	},
+	local_removeFn = function(fnName){
+		var key;
+
+		for(key in this){
+			delete this[key];
+			this[key] = null;
+		}
+		
+		key = null;
 	},
 	
 	types = {
@@ -184,6 +198,8 @@
 	};
 	
 	iUtils.extend = local_extend;
+
+	iUtils.removeFn = local_removeFn;
 	
 	//object methods
 	iUtils.fn = iUtils.prototype = {
@@ -394,9 +410,9 @@
 				
 			});
 			
-			local_remove.call(this);
+			local_destroy.call(this);
 			
-			return this;
+			return null;
 		}
 	});
 	

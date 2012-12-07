@@ -1,8 +1,8 @@
-window.a = i$('.test', document.getElementById('wrapper'));
+window.a = i$('.test');
 
 window.b = i$('#wrapper');
 
-window.c = i$('a', i$('#wrapper'));
+window.c = i$('a');
 
 
 window.e = document.createElement('span');
